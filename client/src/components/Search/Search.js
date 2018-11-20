@@ -1,20 +1,41 @@
 import React from "react";
 import "./Search.css";
+import { Input, TextArea, FormBtn } from "../../components/Form";
 
-const Search = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-  <table>
-    <th>
-      <a className="navbar-brand" href="/">
-        NEW YORK TIMES ARTICLE SCRUBBER
-      </a>
-    </th>
-    <tr>
-      <p>Search for and annotate articles of interest</p>
-    </tr>
-  </table>
-    
-  </nav>
+const Search = (props) => (
+  <div>
+      <nav className="navbar navbar-dark bg-primary">
+          <h3 class="text-white h3">
+            Search
+          </h3>   
+      </nav>
+      <form>
+              <Input
+                value={props.topicValue}
+                onChange={props.inputChange}
+                name="topic"
+                placeholder="Topic (required)"
+              />
+              <Input
+                value={props.startYearValue}
+                onChange={props.inputChange}
+                name="startYear"
+                placeholder="Start Year (required)"
+              />
+              <Input
+                value={props.endYearValue}
+                onChange={props.inputChange}
+                name="endYear"
+                placeholder="End Year (required)"
+              />
+              <FormBtn
+                // disabled={!(this.state.author && this.state.title)}
+                // onClick={}
+              >
+                Search Articles..!
+              </FormBtn>
+            </form>
+  </div>
 );
 
 export default Search;

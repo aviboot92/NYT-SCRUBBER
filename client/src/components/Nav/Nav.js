@@ -2,11 +2,11 @@ import React from "react";
 import "./Nav.css";
 
 const Nav = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav className="navbar navbar-dark bg-dark">
   <table>
     <th>
       <a className="navbar-brand" href="/">
-        NEW YORK TIMES ARTICLE SCRUBBER
+        <h1>NEW YORK TIMES ARTICLE SCRUBBER</h1> 
       </a>
     </th>
     <tr>
