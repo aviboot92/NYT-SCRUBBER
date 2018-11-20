@@ -1,7 +1,7 @@
 import React from "react";
-import "./Nav.css";
+import "./Results.css";
 
-const Nav = () => (
+const Results = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
   <table>
     <th>
@@ -10,11 +10,11 @@ const Nav = () => (
       </a>
     </th>
     <tr>
-      <p>Search for and annotate articles of interest</p>
+      <p>Results for and annotate articles of interest</p>
     </tr>
   </table>
     
   </nav>
 );
 
-export default Nav;
+export default Results;

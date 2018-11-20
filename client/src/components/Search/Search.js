@@ -1,7 +1,7 @@
 import React from "react";
-import "./Nav.css";
+import "./Search.css";
 
-const Nav = () => (
+const Search = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
   <table>
     <th>
@@ -17,4 +17,4 @@ const Nav = () => (
   </nav>
 );
 
-export default Nav;
+export default Search;

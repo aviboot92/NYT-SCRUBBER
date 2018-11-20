@@ -7,6 +7,9 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import "./Articles.css";
+import Search from "../../components/Search";
+import Results from "../../components/Results";
+import Saved from "../../components/Saved";
 
 class Articles extends Component {
   state = {
@@ -53,11 +56,18 @@ class Articles extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container>
         <Row>
-
+          <Col size="md-12 sm-12">
+            <Search></Search>
+          </Col>
+          <Col size="md-12 sm-12">
+            <Saved></Saved>
+          </Col>
+          <Col size="md-12 sm-12">
+            <Results></Results>
+          </Col>
         </Row>
-     
       </Container>
     );
   }
