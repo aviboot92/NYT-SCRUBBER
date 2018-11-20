@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
 import "./Articles.css";
 import Search from "../../components/Search";
 import Results from "../../components/Results";
@@ -14,6 +11,9 @@ import Saved from "../../components/Saved";
 class Articles extends Component {
   state = {
     searchArticles: [],
+    topic:"",
+    startYear:"",
+    endYear:""
   };
 
   componentDidMount() {
@@ -59,13 +59,24 @@ class Articles extends Component {
       <Container>
         <Row>
           <Col size="md-12 sm-12">
-            <Search></Search>
+            <Jumbotron>
+              <Search 
+                inputChange = {this.handleInputChange}
+                topicValue = {this.state.topic}
+                startYearValue = {this.state.startYear}
+                endYearValue = {this.state.endYear}>
+              </Search>
+            </Jumbotron>
           </Col>
           <Col size="md-12 sm-12">
+            <Jumbotron>
+              <Results></Results>
+            </Jumbotron>
+          </Col>
+          <Col size="md-12 sm-12">
+          <Jumbotron>
             <Saved></Saved>
-          </Col>
-          <Col size="md-12 sm-12">
-            <Results></Results>
+          </Jumbotron>
           </Col>
         </Row>
       </Container>
