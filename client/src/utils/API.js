@@ -1,9 +1,15 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
-  getBooks: function() {
-    return axios.get("/api/books");
+  // Gets all Articles
+  getArticles: function(req, res) {
+    const params = Object.assign(
+      { api_key: "9b3adf57854f4a19b7b5782cdd6e427a" },
+      req
+    );
+    return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
+      params
+    }).then(articles => res.json(articles));
   },
   // Gets the book with the given id
   getBook: function(id) {

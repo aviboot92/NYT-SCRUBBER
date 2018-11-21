@@ -29,7 +29,7 @@ const Search = (props) => (
                 placeholder="End Year (required)"
               />
               <FormBtn
-                // disabled={!(this.state.author && this.state.title)}
+                disabled={!(props.topicValue && props.startYearValue && props.endYearValue)}
                 // onClick={}
               >
                 Search Articles..!
