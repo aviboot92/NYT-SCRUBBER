@@ -17,19 +17,19 @@ const Search = (props) => (
                 placeholder="Topic (required)"
               />
               <Input
-                value={props.startYearValue}
+                value={props.startDateValue}
                 onChange={props.inputChange}
-                name="startYear"
-                placeholder="Start Year (required)"
+                name="startDate"
+                placeholder="YYYYMMDD (required)"
               />
               <Input
-                value={props.endYearValue}
+                value={props.endDateValue}
                 onChange={props.inputChange}
-                name="endYear"
-                placeholder="End Year (required)"
+                name="endDate"
+                placeholder="YYYYMMDD (required)"
               />
               <FormBtn
-                disabled={!(props.topicValue && props.startYearValue && props.endYearValue)}
+                disabled={!(props.topicValue && props.startDateValue && props.endDateValue)}
                 onClick={props.onSubmit}
               >
                 Search Articles..!

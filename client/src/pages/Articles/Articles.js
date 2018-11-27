@@ -12,16 +12,8 @@ class Articles extends Component {
   state = {
     searchArticles: [],
     topic:"",
-    startYear:"",
-    endYear:""
-  };
-
-  // componentDidMount() {
-  //   this.loadArticles();
-  // }
-
-  loadArticles = (res) => {
-    console.log(res)
+    startDate:"",
+    endDate:""
   };
 
   deleteBook = id => {
@@ -39,11 +31,11 @@ class Articles extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.topic && this.state.startYear && this.state.endYear) {
+    if (this.state.topic && this.state.startDate && this.state.endDate) {
       API.getArticles({
-        topic:this.state.topic,
-        startYear:this.state.startYear,
-        endYear:this.state.endYear
+        endDate:this.state.endDate,
+        startDate:this.state.startDate,
+        topic:this.state.topic
       })
         .then(res => this.setState({searchArticles:res.data.response.docs}))
         .catch(err => console.log(err));
@@ -59,15 +51,15 @@ class Articles extends Component {
               <Search 
                 inputChange = {this.handleInputChange}
                 topicValue = {this.state.topic}
-                startYearValue = {this.state.startYear}
-                endYearValue = {this.state.endYear}
+                startDateValue = {this.state.startDate}
+                endDateValue = {this.state.endDate}
                 onSubmit = {this.handleFormSubmit}>
               </Search>
             </Jumbotron>
           </Col>
           <Col size="md-12 sm-12">
             <Jumbotron>
-              <Results></Results>
+              <Results results = {this.state.searchArticles}></Results>
             </Jumbotron>
           </Col>
           <Col size="md-12 sm-12">
