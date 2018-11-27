@@ -2,9 +2,9 @@ table {
     margin: 0 auto !important;
 }
 
-p{
+h6{
     position: relative;
     margin: 0 auto;
     padding-left: 20%;
-    color: blue;
+    color: yellow;
 }

@@ -16,16 +16,12 @@ class Articles extends Component {
     endYear:""
   };
 
-  componentDidMount() {
-    this.loadBooks();
-  }
+  // componentDidMount() {
+  //   this.loadArticles();
+  // }
 
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch(err => console.log(err));
+  loadArticles = (res) => {
+    console.log(res)
   };
 
   deleteBook = id => {
@@ -43,13 +39,13 @@ class Articles extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
+    if (this.state.topic && this.state.startYear && this.state.endYear) {
+      API.getArticles({
+        topic:this.state.topic,
+        startYear:this.state.startYear,
+        endYear:this.state.endYear
       })
-        .then(res => this.loadBooks())
+        .then(res => this.setState({searchArticles:res.data.response.docs}))
         .catch(err => console.log(err));
     }
   };
@@ -64,7 +60,8 @@ class Articles extends Component {
                 inputChange = {this.handleInputChange}
                 topicValue = {this.state.topic}
                 startYearValue = {this.state.startYear}
-                endYearValue = {this.state.endYear}>
+                endYearValue = {this.state.endYear}
+                onSubmit = {this.handleFormSubmit}>
               </Search>
             </Jumbotron>
           </Col>
