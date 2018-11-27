@@ -45,7 +45,7 @@ class Articles extends Component {
         startYear:this.state.startYear,
         endYear:this.state.endYear
       })
-        .then(res => this.loadBooks(res))
+        .then(res => this.setState({searchArticles:res.data.response.docs}))
         .catch(err => console.log(err));
     }
   };

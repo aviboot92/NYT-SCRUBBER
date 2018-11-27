@@ -30,7 +30,7 @@ const Search = (props) => (
               />
               <FormBtn
                 disabled={!(props.topicValue && props.startYearValue && props.endYearValue)}
-                // onClick={}
+                onClick={props.onSubmit}
               >
                 Search Articles..!
               </FormBtn>
