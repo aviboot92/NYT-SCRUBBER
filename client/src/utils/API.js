@@ -3,14 +3,14 @@ import axios from "axios";
 export default {
   // Gets all Articles
   getArticles: function(req, res) {
-    console.log("Making an Api Call");
+   
     const params = Object.assign(
-      { api_key: "9b3adf57854f4a19b7b5782cdd6e427a" },
-      req
+      { api_key: "6d3df2efb05a47d2854ec1c6d83a36e1" },
+      req.query
     );
     return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
       params
-    })
+    });
   },
   // Gets the book with the given id
   getBook: function(id) {
