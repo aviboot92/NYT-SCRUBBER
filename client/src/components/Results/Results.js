@@ -1,5 +1,6 @@
 import React from "react";
 import "./Results.css";
+import SaveBtn from "../SaveBtn"
 
 const Results = (props) => {
   const results = props.results;
@@ -17,6 +18,7 @@ const Results = (props) => {
                 <li key = {res._id}
                     id = {res._id}>
                   <a href={res.web_url}><b>{res.headline.main}</b></a>
+                  <SaveBtn></SaveBtn>
                 </li>
               )
             })}
