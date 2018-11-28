@@ -2,11 +2,11 @@ import axios from "axios";
 
 export default {
   // Gets all Articles
-  getArticles: function(req, res) {
+  getArticles: function({q,start_year,end_year}) {
    
     const params = Object.assign(
       { api_key: "6d3df2efb05a47d2854ec1c6d83a36e1" },
-      req.query
+      {q,start_year,end_year}
     );
     return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
       params
