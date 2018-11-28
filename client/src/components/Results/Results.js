@@ -4,7 +4,7 @@ import SaveBtn from "../SaveBtn"
 
 const Results = (props) => {
   const results = props.results;
-  console.log(results);
+  console.log(props.onSave);
   return(
           <div>
           <nav className="navbar navbar-dark bg-primary">
@@ -15,10 +15,9 @@ const Results = (props) => {
           <ul className = "list-group">
             {results.map((res) => {
               return(
-                <li key = {res._id}
-                    id = {res._id}>
+                <li key = {res._id}>
                   <a href={res.web_url}><b>{res.headline.main}</b></a>
-                  <SaveBtn></SaveBtn>
+                  <SaveBtn id = {res._id} onSaveClick = {props.onSave}></SaveBtn>
                 </li>
               )
             })}

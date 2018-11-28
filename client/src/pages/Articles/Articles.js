@@ -39,11 +39,14 @@ class Articles extends Component {
        
       })
         .then(res => {
-          console.log(res);
          return this.setState({searchArticles:res.data.response.docs});})
         .catch(err => console.log(err));
     }
   };
+
+  handleSaveBtn = (event) =>{
+    console.log(event.target);
+  }
 
   render() {
     return (
@@ -62,7 +65,7 @@ class Articles extends Component {
           </Col>
           <Col size="md-12 sm-12">
             <Jumbotron>
-              <Results results = {this.state.searchArticles}></Results>
+              <Results onSave = {this.handleSaveBtn} results = {this.state.searchArticles}></Results>
             </Jumbotron>
           </Col>
           <Col size="md-12 sm-12">
