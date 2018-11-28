@@ -33,11 +33,14 @@ class Articles extends Component {
     event.preventDefault();
     if (this.state.topic && this.state.startDate && this.state.endDate) {
       API.getArticles({
-        endDate:this.state.endDate,
-        startDate:this.state.startDate,
-        topic:this.state.topic
+       q: this.state.topic,
+      start_year:this.state.startDate,
+      end_year:  this.state.endDate
+       
       })
-        .then(res => this.setState({searchArticles:res.data.response.docs}))
+        .then(res => {
+          console.log(res);
+         return this.setState({searchArticles:res.data.response.docs});})
         .catch(err => console.log(err));
     }
   };
