@@ -1,10 +1,11 @@
 import React from "react";
 import "./Results.css";
 import SaveBtn from "../SaveBtn"
+import { FormBtn } from "../../components/Form";
 
 const Results = (props) => {
   const results = props.results;
-  console.log(props.onSave);
+  // console.log(props.saveArticles);
   return(
           <div>
           <nav className="navbar navbar-dark bg-primary">
@@ -12,19 +13,25 @@ const Results = (props) => {
                 Results
               </h3>   
           </nav>
-          <ul className = "list-group">
-            {results.map((res) => {
-              return(
-                <li className={props.saveActive ? 'your_className': null} key = {res._id}>
-                  <a href={res.web_url}><b>{res.headline.main}</b></a>
-                  <SaveBtn id = {res._id} onSaveClick = {props.onSave}></SaveBtn>
-                </li>
-              )
-            })}
-          </ul>
+          <form>
+              <ul className = "list-group">
+                {results.map((res) => {
+                  return(  
+                    <li key = {res._id}>
+                      <a href={res.web_url}><b>{res.headline.main}</b></a>
+                      <SaveBtn id = {res._id} onSaveClick = {props.onSave}></SaveBtn>
+                    </li>
+                  )
+                })}
+              </ul>
+              <FormBtn
+                onClick={props.onSubmit}
+              >
+                Submit to SAVE Articles!
+              </FormBtn>
+          </form>
         </div>
         );
-    props.savedArticles.map((article) => console.log(article));
 }
 
 export default Results;
