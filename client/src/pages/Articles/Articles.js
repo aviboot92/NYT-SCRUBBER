@@ -11,6 +11,8 @@ import Saved from "../../components/Saved";
 class Articles extends Component {
   state = {
     searchArticles: [],
+    savedArticles:[],
+    saveActive: false,
     topic:"",
     startDate:"",
     endDate:""
@@ -45,8 +47,16 @@ class Articles extends Component {
   };
 
   handleSaveBtn = (event) =>{
-    console.log(event.target);
-  }
+    // console.log(event.target.id);
+    const article = this.state.searchArticles.map((article) => {
+     if(article._id === event.target.id){
+        this.setState({savedArticles:[...this.state.savedArticles, article]}, () =>{
+          console.log(this.state.savedArticles);
+        });
+      } 
+    });
+    console.log(article);
+  };
 
   render() {
     return (
@@ -65,7 +75,7 @@ class Articles extends Component {
           </Col>
           <Col size="md-12 sm-12">
             <Jumbotron>
-              <Results onSave = {this.handleSaveBtn} results = {this.state.searchArticles}></Results>
+              <Results onSave = {this.handleSaveBtn} saveActive = {this.state.saveActive} savedArticles= {this.state.savedArticles} results = {this.state.searchArticles}></Results>
             </Jumbotron>
           </Col>
           <Col size="md-12 sm-12">

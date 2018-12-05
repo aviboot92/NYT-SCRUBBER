@@ -15,7 +15,7 @@ const Results = (props) => {
           <ul className = "list-group">
             {results.map((res) => {
               return(
-                <li key = {res._id}>
+                <li className={props.saveActive ? 'your_className': null} key = {res._id}>
                   <a href={res.web_url}><b>{res.headline.main}</b></a>
                   <SaveBtn id = {res._id} onSaveClick = {props.onSave}></SaveBtn>
                 </li>
@@ -24,6 +24,7 @@ const Results = (props) => {
           </ul>
         </div>
         );
+    props.savedArticles.map((article) => console.log(article));
 }
 
 export default Results;
