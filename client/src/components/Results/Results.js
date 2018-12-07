@@ -1,7 +1,6 @@
 import React from "react";
 import "./Results.css";
-import SaveBtn from "../SaveBtn"
-import { FormBtn } from "../../components/Form";
+import SaveBtn from "../SaveBtn";
 
 const Results = (props) => {
   const results = props.results;
@@ -24,11 +23,7 @@ const Results = (props) => {
                   )
                 })}
               </ul>
-              <FormBtn
-                onClick={props.onSubmit}
-              >
-                Submit to SAVE Articles!
-              </FormBtn>
+
           </form>
         </div>
         );

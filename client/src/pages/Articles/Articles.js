@@ -47,22 +47,22 @@ class Articles extends Component {
   };
 
   handleResultsFormSubmit = (event) => {
-    // console.log(event);
     event.preventDefault();
-    API.saveArticles({
-      savedArticles: this.state.savedArticles
-    }).then(res => console.log(res))
-      .catch(err => console.log(err));
   };
 
   handleSaveBtn = (event) =>{
     // console.log(event.target.id);
     event.preventDefault();
     const article = this.state.searchArticles.map((article) => {
+
      if(article._id === event.target.id){
-        this.setState({savedArticles:[...this.state.savedArticles, article]}, () =>{
-          console.log(this.state.savedArticles);
-        });
+      // console.log(article);
+      API.saveArticles({
+        id: article._id,
+        url: article.web_url,
+        headline: article.headline.main
+      }).then(res => console.log(res))
+        .catch(err => console.log(err));
       } 
     });
   };
@@ -84,7 +84,7 @@ class Articles extends Component {
           </Col>
           <Col size="md-12 sm-12">
             <Jumbotron>
-              <Results onSave = {this.handleSaveBtn} onSubmit = {this.handleResultsFormSubmit} saveActive = {this.state.saveActive} savedArticles= {this.state.savedArticles} results = {this.state.searchArticles}></Results>
+              <Results onSave = {this.handleSaveBtn}  results = {this.state.searchArticles}></Results>
             </Jumbotron>
           </Col>
           <Col size="md-12 sm-12">

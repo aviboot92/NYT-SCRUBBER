@@ -13,8 +13,9 @@ export default {
     });
   },
   // Save Articles which are opted for Save
-  saveArticles: function({savedArticles}) {
-    return axios.post("/api/articles/" , savedArticles);
+  saveArticles: function({id, url, headline} = {}) {
+    console.log(id, url, headline);
+    return axios.post("/api/articles/", {id,url,headline} );
   },
   // Deletes the book with the given id
   deleteBook: function(id) {
