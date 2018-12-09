@@ -14,11 +14,15 @@ export default {
   },
   // Save Articles which are opted for Save
   saveArticles: function({id, url, headline} = {}) {
-    console.log(id, url, headline);
+    // console.log(id, url, headline);
     return axios.post("/api/articles/", {id,url,headline} );
   },
   // Deletes the book with the given id
-  deleteBook: function(id) {
-    return axios.delete("/api/books/" + id);
+  deleteArticle: function(id) {
+    // return axios.delete("/api/books/" + id);
+    console.log(id);
+  },
+  getSavedArticles: function(){
+    return axios.get("/api/articles");
   }
 };

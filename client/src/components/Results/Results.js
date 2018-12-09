@@ -1,6 +1,6 @@
 import React from "react";
 import "./Results.css";
-import SaveBtn from "../SaveBtn";
+import Btn from "../Btn";
 
 const Results = (props) => {
   const results = props.results;
@@ -18,7 +18,7 @@ const Results = (props) => {
                   return(  
                     <li key = {res._id}>
                       <a href={res.web_url}><b>{res.headline.main}</b></a>
-                      <SaveBtn id = {res._id} onSaveClick = {props.onSave}></SaveBtn>
+                      <Btn id = {res._id} onClick = {props.onSave}>SAVE</Btn>
                     </li>
                   )
                 })}

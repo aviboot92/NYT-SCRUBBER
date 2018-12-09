@@ -18,10 +18,8 @@ class Articles extends Component {
     endDate:""
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
+  componentDidMount() {
+    this.getSaveArticles();
   };
 
   handleInputChange = event => {
@@ -46,25 +44,45 @@ class Articles extends Component {
     }
   };
 
-  handleResultsFormSubmit = (event) => {
-    event.preventDefault();
+  getSaveArticles = () => {
+    API.getSavedArticles()
+      .then(res => {
+        console.log(res.data);
+        const data = res.data;
+        this.setState({savedArticles: data})
+      })
+      .catch(err => console.log(err));
   };
 
   handleSaveBtn = (event) =>{
     // console.log(event.target.id);
     event.preventDefault();
     const article = this.state.searchArticles.map((article) => {
-
      if(article._id === event.target.id){
       // console.log(article);
       API.saveArticles({
         id: article._id,
         url: article.web_url,
         headline: article.headline.main
-      }).then(res => console.log(res))
-        .catch(err => console.log(err));
+      }).then(res => {
+        console.log("I am response"+res)
+      })
+        .catch(err => console.log(err.response));
       } 
     });
+    this.getSaveArticles();
+  };
+
+  handleDelBtn = (event) => {
+    event.preventDefault();
+    console.log(event.target);
+    // this.delArticle(event.target);
+  }
+
+  delArticle = id => {
+    API.deleteArticle(id)
+      .then(res => this.getSaveArticles())
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -89,7 +107,7 @@ class Articles extends Component {
           </Col>
           <Col size="md-12 sm-12">
             <Jumbotron>
-              <Saved></Saved>
+              <Saved onDel = {this.handleDelBtn} savedArticles = {this.state.savedArticles}></Saved>
             </Jumbotron>
           </Col>
         </Row>
