@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    console.log(req);
+    // console.log(req);
     db.Article
       .find()
       .sort({ date: -1 })
@@ -25,6 +25,14 @@ module.exports = {
         // console.log(dbArticle);
         res.json(dbArticle);
       })
+      .catch(err => res.status(422).json(err));
+  },
+  remove: function(req,res){
+    // console.log(req.parms);
+    db.Article
+      .findById({ _id: req.params.id })
+      .then(dbArticle => dbArticle.remove())
+      .then(dbArticle => res.json(dbArticle))
       .catch(err => res.status(422).json(err));
   }
 };

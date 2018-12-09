@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
@@ -47,7 +46,7 @@ class Articles extends Component {
   getSaveArticles = () => {
     API.getSavedArticles()
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         const data = res.data;
         this.setState({savedArticles: data})
       })
@@ -75,13 +74,17 @@ class Articles extends Component {
 
   handleDelBtn = (event) => {
     event.preventDefault();
-    console.log(event.target);
-    // this.delArticle(event.target);
+    // console.log(event.target.id);
+    const id = event.target.id;
+    this.delArticle(id);
   }
 
-  delArticle = id => {
+  delArticle = (id) => {
     API.deleteArticle(id)
-      .then(res => this.getSaveArticles())
+      .then(res =>{
+        console.log(res);
+        this.getSaveArticles();
+      })
       .catch(err => console.log(err));
   };
 

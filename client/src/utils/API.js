@@ -19,8 +19,8 @@ export default {
   },
   // Deletes the book with the given id
   deleteArticle: function(id) {
-    // return axios.delete("/api/books/" + id);
-    console.log(id);
+    // console.log(id);
+    return axios.delete("/api/articles/"+id);
   },
   getSavedArticles: function(){
     return axios.get("/api/articles");
