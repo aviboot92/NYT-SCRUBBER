@@ -25,11 +25,13 @@ export default {
   getSavedArticles: function(){
     return axios.get("/api/articles");
   },
-  getTypeOfRequest: function(){
-    axios.defaults.headers.common['Authorization'] = "dmthcnJhOlZhbkthazI3MDUh";
-    return axios.get("https://stg.maximo.ucla.edu/maximo/oslc/os/ucmxclasshier/_MTMzOA--?lean=1&oslc.properties=classstructure{classstructureid,classificationid,description,descendent}")
-    .then((resp) => {
-      console.dir(resp);
-  });
+  getUsersAuth: function(){
+    console.log(`I am in Axios getUsersAuth Function`);
+    const AuthStr = 'Basic '.concat('dmthcnJhOlZhbkthazI3MDUh'); 
+    const URL = "https://stg.maximo.ucla.edu/maxrest/oslc/whoami?lean=1";
+    return axios.get(URL, { headers: { Authorization: AuthStr } })
+        .then((resp) => {
+          console.log(resp);
+      });
   }
 };
