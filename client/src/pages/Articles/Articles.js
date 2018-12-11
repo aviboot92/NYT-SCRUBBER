@@ -19,6 +19,7 @@ class Articles extends Component {
 
   componentDidMount() {
     this.getSaveArticles();
+    this.getTypeRequest();
   };
 
   handleInputChange = event => {
@@ -87,6 +88,12 @@ class Articles extends Component {
       })
       .catch(err => console.log(err));
   };
+
+  getTypeRequest = ()=> {
+    API.getTypeOfRequest()
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+    };
 
   render() {
     return (

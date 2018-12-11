@@ -24,5 +24,12 @@ export default {
   },
   getSavedArticles: function(){
     return axios.get("/api/articles");
+  },
+  getTypeOfRequest: function(){
+    axios.defaults.headers.common['Authorization'] = "dmthcnJhOlZhbkthazI3MDUh";
+    return axios.get("https://stg.maximo.ucla.edu/maximo/oslc/os/ucmxclasshier/_MTMzOA--?lean=1&oslc.properties=classstructure{classstructureid,classificationid,description,descendent}")
+    .then((resp) => {
+      console.dir(resp);
+  });
   }
 };
